@@ -5,8 +5,10 @@
 **下面具体记录一下，如何在IDEA下从零开始，一步步搭建SpringBoot Web应用，这里采用的是maven作依赖管理。**
 
 需要说明的是SpringBoot依赖的JDK版本为1.8及以上。
+
     1. File->new,选择maven，创建一个空项目，直接next.
     2. 在pom文件中引入SpringBoot相关依赖：
+    
 ```
 <parent>
     <groupId>org.springframework.boot</groupId>
