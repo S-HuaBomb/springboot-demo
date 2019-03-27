@@ -4,10 +4,10 @@
     3. 在Web应用开发这一块，之前的应用一般来说是打包成war包，再发布到相关服务器容器下（例如Tomcat），虽然SpringBoot也可以这么做，但在SpringBoot下更常见的形式是将SpringBoot应用打包成可执行jar包文件。之所以这么做，源于你可以直接将SpringBoot应用看成是一个Java Application，其Web应用可以没有webapp目录（更不用说web.xml了），它推荐使用html页面，并将其作为静态资源使用。 
 **下面具体记录一下，如何在IDEA下从零开始，一步步搭建SpringBoot Web应用，这里采用的是maven作依赖管理。**
 
-需要说明的是SpringBoot依赖的JDK版本为1.8及以上。 
+> 需要说明的是SpringBoot依赖的JDK版本为1.8及以上。 
     1. File->new,选择maven，创建一个空项目，直接next. 
     2. 在pom文件中引入SpringBoot相关依赖：
-    ```
+```
 <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
@@ -20,8 +20,9 @@
     </dependency>
 </dependencies>
 ```
---------------------- 
+
 引入本项目中所需要的相关依赖(MySQL连接驱动 以及Spring Data JPA,thymeleaf模板引擎)：
+
 ```
         <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
         <dependency>
@@ -42,7 +43,7 @@
             <version>1.5.1.RELEASE</version>
         </dependency>
         ```
----------------------
+
 在application.properties中配置MySQL数据库连接信息 这里的数据库为本地数据库test,用户名和密码改成自己的：
 ```
 #MySQL
@@ -51,7 +52,7 @@ spring.datasource.url=jdbc:mysql://localhost:3306/test?characterEncoding=utf8
 spring.datasource.username=****
 spring.datasource.password=****
 ```
---------------------- 
+ 
 在application.properties中配置Spring Data JPA 这一段的意思就是说，数据库类型为MYSQL，日志信息打印具
 体执行的sql语句，表更新策略以及Java类到数据库表字段的映射规则等，具体查看网络资料：
 ```java
@@ -64,7 +65,7 @@ spring.jpa.hibernate.naming-strategy = org.hibernate.cfg.ImprovedNamingStrategy
 # stripped before adding them to the entity manager)
 spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL5Dialect
 ```
---------------------- 
+
 编写一个实体类User @Table标签，指定数据库中对应的表名，id配置为主键，生成策略为自动生成：
 ```java 
 /**
@@ -83,7 +84,7 @@ public class User {
     private String password;
 }
 ```
---------------------- 
+
 基于JPA，实现DAO层（即数据库数据的增删改查操作）新建 UserRepositoty.java 接口文件，源代码如下：
 ```java
 /**
