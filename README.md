@@ -4,8 +4,8 @@
     3. 在Web应用开发这一块，之前的应用一般来说是打包成war包，再发布到相关服务器容器下（例如Tomcat），虽然SpringBoot也可以这么做，但在SpringBoot下更常见的形式是将SpringBoot应用打包成可执行jar包文件。之所以这么做，源于你可以直接将SpringBoot应用看成是一个Java Application，其Web应用可以没有webapp目录（更不用说web.xml了），它推荐使用html页面，并将其作为静态资源使用。 
 **下面具体记录一下，如何在IDEA下从零开始，一步步搭建SpringBoot Web应用，这里采用的是maven作依赖管理。**
 
-需要说明的是SpringBoot依赖的JDK版本为1.8及以上。 
-    1. File->new,选择maven，创建一个空项目，直接next. 
+需要说明的是SpringBoot依赖的JDK版本为1.8及以上。
+    1. File->new,选择maven，创建一个空项目，直接next.
     2. 在pom文件中引入SpringBoot相关依赖：
 ```
 <parent>
